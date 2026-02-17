@@ -1,4 +1,4 @@
-from sqlalchemy import create_engie
+from sqlalchemy import create_engine
 
 class Config(object):
     SECRET_KEY="ClaveSecreta"
