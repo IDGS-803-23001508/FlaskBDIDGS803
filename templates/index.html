@@ -1,10 +1,12 @@
-{% extends "layout.html" %} 
-{% block container %} 
+{% extends "layout.html" %}
+{% block container %}
+
 
 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
-  <a href="Alumnos" class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Nuevo</a>
-  <br>  
-  <table class="w-full text-sm text-left rtl:text-right text-body">
+    <a href="Alumnos"
+        class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Nuevo</a>
+    <br>
+    <table class="w-full text-sm text-left rtl:text-right text-body">
         <thead class="text-sm text-body bg-neutral-secondary-soft border-b rounded-base border-default">
             <tr>
                 <th scope="col" class="px-6 py-3 font-medium">
@@ -28,66 +30,31 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="bg-neutral-primary border-b border-default">
+            {%for alum in alumno%}
+            <tr class="border-b hover:bg-neutral-secondary-soft">
                 <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
-                    Luis
-                </th>
+                    {{alum.nombre}}</th>
                 <td class="px-6 py-4">
-                    Hernandez
-                </td>
+                    {{alum.apaterno}} </td>
                 <td class="px-6 py-4">
-                    luis@gmail.com
+                    {{alum.email}} </td>   
+                <td class="px-6 py-4 text-right">
+                    <a href="modificar?id={{alum.id}}"
+                        class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                        Editar</a>   
                 </td>
-                <td class="px-6 py-4">
-                  <button type="button" class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Editar</button>
+                <td class="px-6 py-4 text-right">
+                    <a href="detalles?id={{alum.id}}"
+                        class="text-white bg-warning box-border border border-transparent hover:bg-warning-strong focus:ring-4 focus:ring-warning-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                        Detalles</a>
                 </td>
-                <td class="px-6 py-4">
-                  <button type="button" class="text-white bg-warning box-border border border-transparent hover:bg-warning-strong focus:ring-4 focus:ring-warning-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Detalles</button>
-                </td>
-                <td class="px-6 py-4">
-                  <button type="button" class="text-white bg-danger box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Eliminar</button>
-                </td>
+                <td class="px-6 py-4 text-right">
+                    <a href="eliminar?id={{alum.id}}"
+                        class="text-white bg-danger box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                        Eliminar</a>
+                </td> 
             </tr>
-            <tr class="bg-neutral-primary border-b border-default">
-                <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
-                    Miguel
-                </th>
-                <td class="px-6 py-4">
-                    Martinez
-                </td>
-                <td class="px-6 py-4">
-                    marinez@gmail.com
-                </td>
-                <td class="px-6 py-4">
-                  <button type="button" class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Editar</button>
-                </td>
-                <td class="px-6 py-4">
-                  <button type="button" class="text-white bg-warning box-border border border-transparent hover:bg-warning-strong focus:ring-4 focus:ring-warning-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Detalles</button>
-                </td>
-                <td class="px-6 py-4">
-                  <button type="button" class="text-white bg-danger box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Eliminar</button>
-                </td>
-            </tr>
-            <tr class="bg-neutral-primary">
-                <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
-                    Gilberto
-                </th>
-                <td class="px-6 py-4">
-                    Sanchez
-                </td>
-                <td class="px-6 py-4">
-                    gill@gmail.com
-                </td>
-                <td class="px-6 py-4">
-                  <button type="button" class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Editar</button>
-                </td>
-                <td class="px-6 py-4">
-                  <button type="button" class="text-white bg-warning box-border border border-transparent hover:bg-warning-strong focus:ring-4 focus:ring-warning-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Detalles</button>
-                </td>
-                <td class="px-6 py-4">
-                  <button type="button" class="text-white bg-danger box-border border border-transparent hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Eliminar</button>
-                </td>
-            </tr>
+            {%endfor%}
         </tbody>
     </table>
 </div>

@@ -16,14 +16,37 @@ csrf = CSRFProtect()
 def page_not_found(e):
     return render_template('404.html'), 404
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 @app.route("/index")
 def index():
-	return render_template("index.html")
+    create_form = forms.UserForm(request.form)
+    alumno = Alumnos.query.all()
+    return render_template("index.html", form=create_form, alumno=alumno)
 
-@app.route("/Alumnos")
+@app.route("/Alumnos", methods=["GET", "POST"])
 def alumnos():
-    return render_template("alumnos.html")
+    create_form = forms.UserForm(request.form)
+    if request.method == "POST":
+        alum = Alumnos(nombre=create_form.nombre.data, 
+                        apaterno=create_form.apaterno.data, 
+                        email=create_form.email.data)
+        db.session.add(alum)
+        db.session.commit()
+        return redirect(url_for("index"))
+    return render_template("alumnos.html", form=create_form)
+
+
+@app.route("/detalles/", methods=["GET", "POST"])
+def detalles():
+    create_form = forms.UserForm(request.form)
+    if request.method == "GET":
+        id=request.args.get("id")
+        alumn1=db.session.query(Alumnos).filter(Alumnos.id==id).first()
+        id=request.args.get("id")
+        nombre=alumn1.nombre
+        apaterno=alumn1.apaterno
+        email=alumn1.email
+        return render_template("detalles.html", id=id, nombre=nombre, apaterno=apaterno, email=email, form=create_form)
 
 if __name__ == '__main__':
     csrf.init_app(app)
