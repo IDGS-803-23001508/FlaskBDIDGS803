@@ -16,11 +16,15 @@
                 class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none") }}
             </div>
             <div class="mb-5">
-                {{ macros.campoNuevo(form.apaterno,
+                {{ macros.campoNuevo(form.apellidos,
                 class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none") }}
             </div>
             <div class="mb-6">
                 {{ macros.campoNuevo(form.email,
+                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none") }}
+            </div>
+            <div class="mb-6">
+                {{ macros.campoNuevo(form.telefono,
                 class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none") }}
             </div>
             <div class="grid md:grid-cols-2 md:gap-6">
@@ -28,7 +32,7 @@
                     class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" />
             </div>
             <br>
-            <a href="index"
+            <a href="{{ url_for('index') }}"
                 class="text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">Cancelar</a>
         </form>
     </div>

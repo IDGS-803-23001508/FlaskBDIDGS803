@@ -13,10 +13,13 @@
                     NOMBRE
                 </th>
                 <th scope="col" class="px-6 py-3 font-medium">
-                    APATERNO
+                    APELLIDO
                 </th>
                 <th scope="col" class="px-6 py-3 font-medium">
                     CORREO
+                </th>
+                <th scope="col" class="px-6 py-3 font-medium">
+                    TELEFONO
                 </th>
                 <th scope="col" class="px-6 py-3 font-medium">
                     EDITAR
@@ -35,9 +38,11 @@
                 <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
                     {{alum.nombre}}</th>
                 <td class="px-6 py-4">
-                    {{alum.apaterno}} </td>
+                    {{alum.apellidos}} </td>
                 <td class="px-6 py-4">
-                    {{alum.email}} </td>   
+                    {{alum.email}} </td>
+                <td class="px-6 py-4">
+                    {{alum.telefono}} </td>      
                 <td class="px-6 py-4 text-right">
                     <a href="modificar?id={{alum.id}}"
                         class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
