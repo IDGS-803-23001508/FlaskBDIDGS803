@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
+
+    <a href="{{ url_for('maestros.nuevo') }}"
+        class="text-white bg-brand hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium rounded-base text-sm px-4 py-2.5 focus:outline-none">
+        Nuevo Maestro
+    </a>
+
+    <br><br>
+
+    <table class="w-full text-sm text-left text-body">
+        <thead class="text-sm bg-neutral-secondary-soft border-b border-default">
+            <tr>
+                <th class="px-6 py-3">NOMBRE</th>
+                <th class="px-6 py-3">APELLIDOS</th>
+                <th class="px-6 py-3">CORREO</th>
+                <th class="px-6 py-3">ESPECIALIDAD</th>
+                <th class="px-6 py-3">EDITAR</th>
+                <th class="px-6 py-3">DETALLES</th>
+                <th class="px-6 py-3">ELIMINAR</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for maestro in maestros %}
+            <tr class="border-b hover:bg-neutral-secondary-soft">
+                <td class="px-6 py-4">{{ maestro.nombre }}</td>
+                <td class="px-6 py-4">{{ maestro.apellidos }}</td>
+                <td class="px-6 py-4">{{ maestro.email }}</td>
+                <td class="px-6 py-4">{{ maestro.especialidad }}</td>
+
+                <td class="px-6 py-4">
+                    <a href="{{ url_for('maestros.modificar', matricula=maestro.matricula) }}"
+                        class="text-white bg-success hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium rounded-base text-sm px-4 py-2.5">
+                        Editar
+                    </a>
+                </td>
+
+                <td class="px-6 py-4">
+                    <a href="{{ url_for('maestros.detalles', matricula=maestro.matricula) }}"
+                        class="text-white bg-warning hover:bg-warning-strong focus:ring-4 focus:ring-warning-medium shadow-xs font-medium rounded-base text-sm px-4 py-2.5">
+                        Detalles
+                    </a>
+                </td>
+
+                <td class="px-6 py-4">
+                    <a href="{{ url_for('maestros.eliminar', matricula=maestro.matricula) }}"
+                        class="text-white bg-danger hover:bg-danger-strong focus:ring-4 focus:ring-danger-medium shadow-xs font-medium rounded-base text-sm px-4 py-2.5">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}

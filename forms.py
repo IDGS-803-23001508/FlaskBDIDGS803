@@ -21,3 +21,23 @@ class UserForm(Form):
     telefono = StringField('telefono',  [
         validators.DataRequired(message='El campo es requerido')
     ])
+
+class MaesForm(Form):
+    matricula = IntegerField('matricula')
+
+    nombre = StringField('nombre',  [
+        validators.DataRequired(message='El campo es requerido'),
+        validators.length(min=4, max=20, message='Ingrese un nombre válido')
+    ])
+
+    apellidos = StringField('apellidos',  [
+        validators.DataRequired(message='El campo es requerido')
+    ])
+
+    email = EmailField('correo',  [
+        validators.Email(message='Ingrese un correo válido')
+    ])
+
+    especialidad = StringField('especialidad',  [
+        validators.DataRequired(message='El campo es requerido')
+    ])

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block container %}
+{% import "_macros.html" as macros %}
+
+<div class="min-h-screen flex items-center justify-center bg-gray-50">
+    <div class="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
+        <form action="" method="POST" novalidate>
+            {{ form.csrf_token }}
+            <input type="hidden" name="csrf_token" value="{{ csrf_token()}}" />
+
+            {{ macros.campoNuevo(form.matricula,
+            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none") }}
+
+            {{ macros.campoNuevo(form.nombre,
+            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none") }}
+
+            {{ macros.campoNuevo(form.apellidos,
+            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none") }}
+
+            {{ macros.campoNuevo(form.email,
+            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none") }}
+
+            {{ macros.campoNuevo(form.especialidad,
+            class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none") }}
+
+            <br>
+
+            <input type="submit" value="Modificar"
+                class="text-white bg-brand hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium rounded-base text-sm px-4 py-2.5" />
+
+            <br><br>
+
+            <a href="{{ url_for('maestros.listado') }}"
+                class="text-white bg-brand hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium rounded-base text-sm px-4 py-2.5">
+                Cancelar
+            </a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
