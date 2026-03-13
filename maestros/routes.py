@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for
-from . import maestros
+from maestros import maestros
 import forms
 from models import db, Maestros
 
@@ -9,14 +9,14 @@ def listado():
     create_form = forms.MaesForm(request.form)
     lista_maestros = Maestros.query.all()
     return render_template(
-        "maestros/listadoMaes.html",
+        "maestros/listado_maestros.html",
         form=create_form,
         maestros=lista_maestros
     )
 
 
-@maestros.route("/nuevo", methods=["GET", "POST"])
-def nuevo():
+@maestros.route("/agregarMaestros", methods=["GET", "POST"])
+def agregar():
     form = forms.MaesForm(request.form)
 
     if request.method == "POST":
@@ -30,9 +30,9 @@ def nuevo():
         db.session.commit()
         return redirect(url_for('maestros.listado'))
 
-    return render_template("maestros/maestros.html", form=form)
+    return render_template("maestros/agregar_maestros.html", form=form)
 
-@maestros.route("/modificar", methods=["GET", "POST"])
+@maestros.route("/modificarMaestros", methods=["GET", "POST"])
 def modificar():
     form = forms.MaesForm(request.form)
 
@@ -59,7 +59,7 @@ def modificar():
 
     return render_template("maestros/modificar_maestros.html", form=form)
 
-@maestros.route("/eliminar", methods=["GET", "POST"])
+@maestros.route("/eliminarMaestros", methods=["GET", "POST"])
 def eliminar():
     form = forms.MaesForm(request.form)
 
@@ -82,18 +82,14 @@ def eliminar():
 
     return render_template("maestros/eliminar_maestros.html", form=form)
 
-@maestros.route("/detalles")
+@maestros.route("/detallesMaestros")
 def detalles():
     matricula = request.args.get("matricula")
     maestro = Maestros.query.get(matricula)
 
     return render_template(
         "maestros/detalles_maestros.html",
-        matricula=maestro.matricula,
-        nombre=maestro.nombre,
-        apellidos=maestro.apellidos,
-        email=maestro.email,
-        especialidad=maestro.especialidad
+        maestro=maestro
     )
 
 @maestros.route('/perfil/<nombre>')

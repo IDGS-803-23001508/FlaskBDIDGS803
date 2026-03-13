@@ -41,3 +41,16 @@ class MaesForm(Form):
     especialidad = StringField('especialidad',  [
         validators.DataRequired(message='El campo es requerido')
     ])
+
+class CursoForm(Form):
+    id = IntegerField('id', [validators.optional()])
+    nombre = StringField("Nombre del Curso", [
+        validators.DataRequired(message="El nombre es requerido"),
+        validators.length(min=1, max=150)
+    ])
+    descripcion = StringField("Descripción", [
+        validators.DataRequired(message="La descripción es requerida")
+    ])
+    maestro_id = IntegerField("Matrícula del Maestro", [
+        validators.optional()
+    ])

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block container %}
+
+<div class="min-h-screen flex items-center justify-center bg-gray-50 w-full">
+    <div class="w-full max-w-lg bg-white shadow-lg rounded-2xl p-8 text-center">
+        <img src="{{ url_for('static', filename='img/curso.png') }}"
+            class="w-28 h-28 rounded-full mx-auto mb-4 border-4 border-blue-500 shadow-md">
+
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-heading">
+            Nombre del Curso: {{ curso.nombre }}
+        </h5>
+
+        <h3 class="mb-2 text-xl font-semibold text-heading">
+            Descripción: {{ curso.descripcion }}
+        </h3>
+
+        <h3 class="mb-2 text-xl font-semibold text-heading">
+            Nombre del Maestro: {{ curso.maestro.nombre }} {{ curso.maestro.apellidos }}
+        </h3>
+
+        <div class="w-full mt-6">
+            <h6 class="text-sm font-semibold text-heading mb-2">
+                Alumnos inscritos ({{ curso.alumnos|length }})
+            </h6>
+            {% if curso.alumnos %}
+            <ul class="divide-y divide-default w-full">
+                {% for alumno in curso.alumnos %}
+                <li class="py-2 text-sm text-body flex justify-between">
+                    <span>{{ alumno.nombre }} {{ alumno.apellidos }}</span>
+                    <span class="text-xs text-gray-400">{{ alumno.email }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p class="text-sm text-gray-400 text-center">No hay alumnos inscritos.</p>
+            {% endif %}
+        </div>
+
+        <div class="grid md:grid-cols-1 md:gap-6">
+            <a href="{{ url_for('cursos.listado') }}"
+                class="text-center text-white bg-brand hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium rounded-base text-sm px-4 py-2.5">
+                Regresar
+            </a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
